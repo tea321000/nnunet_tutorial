@@ -89,9 +89,9 @@ export LD_LIBRARY_PATH=$HOME/gcc-5.4.0/lib:$HOME/gcc-5.4.0/lib64:$LD_LIBRARY_PAT
 
 此时仅在当前的terminal生效，一劳永逸要将以上两行放到`~/.bashrc`的最后，然后`source ~/.bashrc`
 
+### 编译pytorch1.5\(CUDA9.0支持的最高版本\)
 
-
-**在编译完成后，需要再从源码编译**[**pytorch**](https://github.com/pytorch/pytorch/tree/v1.5.0)。由于使用的是cuda9.0，因此不支持pytorch1.6以上，只能选择pytorch1.5版本。clone时需要clone `v1.5`的tag而不是最新的`master` branch：
+在编译完成后，需要再从源码编译[pytorch](https://github.com/pytorch/pytorch/tree/v1.5.0)**。**由于使用的是cuda9.0，因此不支持pytorch1.6以上，只能选择pytorch1.5版本。clone时需要clone `v1.5`的tag而不是最新的`master` branch：
 
 ```bash
 cd ~
@@ -112,9 +112,9 @@ python setup.py install
 
 尤其要注意倒数第二行不能直接复制官方github里的命令（因为是面向conda的）而要将`CMAKE_PREFIX_PATH`设置为你virtualenv的`bin`文件夹，即可以通过你自己的virtualenv找到`cmake`。install后等待漫长的编译，pytorch也就编译成功啦。
 
+### 安装nnUNet
 
-
-**最后则是对**[**nnUNet**](https://github.com/MIC-DKFZ/nnUNet/tree/v1.5.1)**的安装（推荐从源码安装）**。PyTorch1.6以后自带混合精度训练，不需要再进行[`apex`](https://github.com/NVIDIA/apex)的安装，但由于我们这个是1.5的版本，还是需要进行安装：
+最后则是对[nnUNet](https://github.com/MIC-DKFZ/nnUNet/tree/v1.5.1)的安装**（推荐从源码安装，方便魔改代码，对nnUNet文件夹的py文件进行更新后可以实时反应到环境中 不需要再次`pip uninstall pip install`）**。PyTorch1.6以后自带混合精度训练，不需要再进行[`apex`](https://github.com/NVIDIA/apex)的安装，但由于我们这个是1.5的版本，还是需要进行安装：
 
 ```bash
 cd env_name
