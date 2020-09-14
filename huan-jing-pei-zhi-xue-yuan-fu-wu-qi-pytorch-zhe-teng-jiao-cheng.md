@@ -140,5 +140,19 @@ pip install --upgrade git+https://github.com/nanohanno/hiddenlayer.git@bugfix/ge
 
 
 
+## ~~方法二：更改CUDA版本~~
 
+非常不幸由于学院服务器的显卡驱动版本太低，最高只能支持`CUDA9.1`，因此即使用no root方法安装了`CUDA9.2`，`pip install`或者from source build的pytorch也不能正常使用CUDA。因此此方法只做存档以备参考。
+
+\`\`[`CUDA.run`](https://developer.nvidia.com/cuda-92-download-archive)文件直接使用`sh CUDA.run`命令安装即可，可以不使用sudo，在安装时不要选择安装显卡驱动只安装toolkit到home目录下的某个文件夹，而是对于[`cudnn.tgz`](https://developer.nvidia.com/rdp/cudnn-archive)则是按照官方的tutorial解压后复制相应的文件到CUDA的目录下即可。最后我们为防止原来的CUDA和cudnn对新的产生影响，将原来的`module`去掉后将解压的CUDA添加到环境变量中：
+
+```bash
+module rm cuda90
+module rm cudnn
+export PATH=$HOME/lib/cuda-9.2/bin:$PATH
+export CPATH="$HOME/lib/cuda-9.2/include"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib/cuda-9.2/lib64
+```
+
+至此no root的CUDA和cudnn安装成功。其余步骤与方法一一样，通过编译安装GCC和pytorch；对于存在对应CUDA版本的pip二进制wheel，可以直接使用`pip install`的方法来安装pytorch。
 
