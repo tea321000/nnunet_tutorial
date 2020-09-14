@@ -2,7 +2,24 @@
 
 经过半个月的折腾，我大致总结出两个办法：1、**使用学院服务器集群`module`管理器的`CUDA9.0`对pytorch源码进行编译**（缺点：最高只能到pytorch1.5，pytorch1.6需要`CUDA9.2`以上版本的编译，而且pytorch1.6原生支持nnunet的混合精度训练，不然必须额外下载安装令人头疼的`apex`）；2、学院服务器`nvidia-smi`显示的显卡驱动版本`390.46`经[查询](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)是不支持`CUDA10`的，因此`module`管理器里的`cuda10.0`也是用不了的（服务器里有什么module可以在`/cm/shared/app`路径下查看），**但我们可以自行安装**[**CUDA9.2**](https://developer.nvidia.com/cuda-92-download-archive)**和**[**CUDNN7.6.5**](https://developer.nvidia.com/rdp/cudnn-archive)（CUDNN跟CUDA版本需要对应）**对pytorch最新版本（支持CUDA9.2）进行编译**，但由于没有`root`权限，因此必须下载`run`版本和`tgz`版本文件，解压cuda和cudnn后手动添加环境变量到`PATH`和`LD_LIBRARY_PATH`这两个环境变量中而无法直接进行安装。
 
-**首先是对虚拟环境的创建**。虚拟环境不建议使用anaconda冗余的虚拟环境（nnunet强烈不建议 因为会导致问题的产生）而建议使用`virtualenv`，anaconda具有`conda`和`pip`两个安装源，两个安装包管理之间无法相互管理另一个源安装的包，安装的package版本号也往往不同，因此常常会出现冲突等问题。但学院服务器没有`root`权限，限制只能通过
+附学院服务器module管理器的常用命令：
+
+```bash
+#列出目前使用的module
+module list
+#添加module(服务器里有什么module可以在/cm/shared/apps路径下查看)
+module add xxx
+#删除module
+module remove xxx
+```
+
+\*\*\*\*
+
+## 方法一：使用学院的CUDA9.0进行编译
+
+### **对虚拟环境的创建**
+
+虚拟环境不建议使用anaconda冗余的虚拟环境（nnunet强烈不建议 因为会导致问题的产生）而建议使用`virtualenv`，anaconda具有`conda`和`pip`两个安装源，两个安装包管理之间无法相互管理另一个源安装的包，安装的package版本号也往往不同，因此常常会出现冲突等问题。但学院服务器没有`root`权限，限制只能通过
 
 ```bash
 conda env create -n env_name python=3.7 
@@ -30,7 +47,11 @@ virtualenv --python=/home/user0xx/.conda/envs/conda_env_name/bin/python3.7 new_e
 
 由于本人需要使用高版本的pytorch\(&gt;=1.4\)，而学院服务器是老旧的CUDA9.0，因此并没有&gt;=1.4版本的pre-build二进制pip package可以下载，因此需要from source编译pytorch。
 
-又由于学院服务器只有GCC7（CUDA9.0只能用GCC6以下进行编译）和GCC5.5（此版本编译pytorch会有bug），**因此我们需要自行编译一个GCC5.4用于源码编译**。首先在[GNU release](https://gcc.gnu.org/releases.html) 页面将GCC5.4下载下来，解压后以文本打开`gcc-5.4.0/contrib/download_prerequisites`，可以发现GCC依赖于`gmp mpc mpfr`这三个package，而且该文件里会标明使用的版本号。虽然也可以直接运行
+又由于学院服务器只有GCC7（CUDA9.0只能用GCC6以下进行编译）和GCC5.5（此版本编译pytorch会有bug），因此我们需要自行编译一个GCC5.4用于源码编译。
+
+### 编译GCC5.4
+
+首先在[GNU release](https://gcc.gnu.org/releases.html) 页面将GCC5.4下载下来，解压后以文本打开`gcc-5.4.0/contrib/download_prerequisites`，可以发现GCC依赖于`gmp mpc mpfr`这三个package，而且该文件里会标明使用的版本号。虽然也可以直接运行
 
 ```bash
 ./contrib/download_prerequisites
