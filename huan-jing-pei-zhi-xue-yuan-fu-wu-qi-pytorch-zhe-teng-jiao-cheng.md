@@ -5,6 +5,8 @@
 附学院服务器module管理器的常用命令：
 
 ```bash
+#列出服务器中已经安装的module
+module avail
 #列出目前使用的module
 module list
 #添加module(服务器里有什么module可以在/cm/shared/apps路径下查看)
