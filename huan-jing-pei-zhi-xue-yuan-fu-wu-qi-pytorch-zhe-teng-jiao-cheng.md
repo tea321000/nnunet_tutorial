@@ -114,6 +114,8 @@ python setup.py install
 
 尤其要注意倒数第二行不能直接复制官方github里的命令（因为是面向conda的）而要将`CMAKE_PREFIX_PATH`设置为你virtualenv的`bin`文件夹，即可以通过你自己的virtualenv找到`cmake`。install后等待漫长的编译，pytorch也就编译成功啦。
 
+`CUDNN_LIB_DIR='/cm/shared/apps/cudnn/7.0/lib64/' CUDNN_INCLUDE_DIR='/cm/shared/apps/cudnn/7.0/include/'`
+
 ### 安装nnUNet
 
 最后则是对[nnUNet](https://github.com/MIC-DKFZ/nnUNet/tree/v1.5.1)的安装**（推荐从源码安装，方便魔改代码，对nnUNet文件夹的py文件进行更新后可以实时反应到环境中 不需要再次`pip uninstall pip install`）**。PyTorch1.6以后自带混合精度训练，不需要再进行[`apex`](https://github.com/NVIDIA/apex)的安装，但由于我们这个是1.5的版本，还是需要进行安装：
