@@ -149,7 +149,7 @@ pip install --upgrade git+https://github.com/nanohanno/hiddenlayer.git@bugfix/ge
 
 ```
 
-安装完成后，终于我们的环境都配置好了= =
+
 
 ### 配置nnunet
 
@@ -173,7 +173,7 @@ export nnUNet_preprocessed="/home/user026/zzq/nnunet/dataset/preprocessed"
 export RESULTS_FOLDER="/home/user026/zzq/nnunet/dataset/trained_models"
 ```
 
-
+终于我们的环境都配置好了= =
 
 ## ~~方法二：更改CUDA版本~~
 
