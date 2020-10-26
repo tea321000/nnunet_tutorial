@@ -151,6 +151,28 @@ pip install --upgrade git+https://github.com/nanohanno/hiddenlayer.git@bugfix/ge
 
 安装完成后，终于我们的环境都配置好了= =
 
+### 配置nnunet
+
+安装好nnunet后还要对其进行一些文件夹路径的配置：
+
+```bash
+cd ..
+#创建nnUNet数据集文件夹
+mkdir dataset && cd dataset
+#创建预训练 原始 训练模型三个文件夹
+mkdir preprocessed raw trained_models
+#在原始文件夹中创建原始数据 裁剪后数据两个文件夹
+cd raw && mkdir raw_data cropped_data
+```
+
+接着修改`.bashrc`文件，在最后加上：
+
+```bash
+export nnUNet_raw_data_base="/home/user026/zzq/nnunet/dataset/raw"
+export nnUNet_preprocessed="/home/user026/zzq/nnunet/dataset/preprocessed"
+export RESULTS_FOLDER="/home/user026/zzq/nnunet/dataset/trained_models"
+```
+
 
 
 ## ~~方法二：更改CUDA版本~~
