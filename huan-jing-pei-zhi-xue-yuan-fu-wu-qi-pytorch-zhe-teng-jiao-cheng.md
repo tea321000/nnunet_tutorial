@@ -137,6 +137,7 @@ cd PyProf
 pip install .
 cd ../apex
 #下面这条是C++版本的安装 我测试了没有成功 不成功可以安装Python版本 虽然效率可能只有百分之90但也足够了
+#据说1.5版本就是不能用C++版本会报runtime error 需要使用可以编译下载1.4版本的
 pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 #Python版本
 pip install -v --no-cache-dir ./
