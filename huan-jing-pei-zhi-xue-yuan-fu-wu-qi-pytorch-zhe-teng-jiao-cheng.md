@@ -99,6 +99,7 @@ export LD_LIBRARY_PATH=$HOME/gcc-5.4.0/lib:$HOME/gcc-5.4.0/lib64:$LD_LIBRARY_PAT
 
 ```bash
 cd ~
+#据说1.5版本就是不能用C++版本的apex会报runtime error 需要使用C++版本的apex可以编译下载1.4版本的
 git clone --depth 1 --branch v1.5.0 https://github.com/pytorch/pytorch/
 ```
 
