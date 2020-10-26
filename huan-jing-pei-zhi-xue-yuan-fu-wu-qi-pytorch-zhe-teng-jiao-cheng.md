@@ -116,7 +116,7 @@ export CUDNN_INCLUDE_DIR="/cm/shared/apps/cudnn/7.0/include/"
 python setup.py install
 ```
 
-尤其要注意倒数第二行不能直接复制官方github里的命令（因为是面向conda的）而要将`CMAKE_PREFIX_PATH`设置为你virtualenv的`bin`文件夹，即可以通过你自己的virtualenv找到`cmake`。或者也可以通过在[cmake官网](https://cmake.org/download/)上下载cmake1的二进制预编译.sh文件，将其解压到home目录下面以后`export CMAKE_PREFIX_PATH=$HOME/cmake:$PATH` 使用下载的cmake来进行编译。
+尤其要注意倒数第二行不能直接复制官方github里的命令（因为是面向conda的）而要将`CMAKE_PREFIX_PATH`设置为你virtualenv的`bin`文件夹，即可以通过你自己的virtualenv找到`cmake`。或者也可以通过在[cmake官网](https://cmake.org/download/)上下载cmake的二进制预编译.sh文件，将其解压到home目录下面以后`export CMAKE_PREFIX_PATH=$HOME/cmake:$PATH` 使用下载的cmake来进行编译。
 
 install后等待漫长的编译，pytorch也就编译成功啦。
 
