@@ -104,7 +104,6 @@ git clone --depth 1 --branch v1.5.0 https://github.com/pytorch/pytorch/
 
 ```bash
 pip install numpy ninja pyyaml mkl mkl-include setuptools cmake cffi
-git clone --recursive https://github.com/pytorch/pytorch
 cd pytorch
 git submodule sync
 git submodule update --init --recursive
