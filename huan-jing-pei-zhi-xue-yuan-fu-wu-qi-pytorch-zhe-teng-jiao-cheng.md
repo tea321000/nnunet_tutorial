@@ -33,7 +33,9 @@ conda env create -n env_name python=3.7
 python3 -m venv env_name
 ```
 
-无法自定义python的版本，因此需要创建Python3.7时可以先通过`conda env create` 创建带有python3.7的conda环境`conda_env_name`，然后通过`conda env list`查看这个环境中python3.7的位置并使用`pip install virtualenv`安装`virtualenv`，接着
+无法自定义python的版本，因此需要创建Python3.7时可以先通过`conda env create` 创建带有python3.7的conda环境`conda_env_name`，然后再在进入conda虚拟环境的情况下运行上面的指令安装python3.7的虚拟环境。
+
+或者也可以在进入conda虚拟环境的情况下通过`conda env list`查看这个环境中python3.7的位置并使用`pip install virtualenv`安装`virtualenv`，接着
 
 ```bash
 virtualenv --python=/home/user0xx/.conda/envs/conda_env_name/bin/python3.7 new_env_name
