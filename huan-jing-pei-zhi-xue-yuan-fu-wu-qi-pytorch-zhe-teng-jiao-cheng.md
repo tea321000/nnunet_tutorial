@@ -165,7 +165,7 @@ mkdir preprocessed raw trained_models
 cd raw && mkdir raw_data cropped_data
 ```
 
-接着修改`.bashrc`文件，在最后加上：
+接着修改`.bashrc`文件，在最后加上（视自己的具体目录）：
 
 ```bash
 export nnUNet_raw_data_base="/home/user026/zzq/nnunet/dataset/raw"
