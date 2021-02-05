@@ -16,7 +16,7 @@ module remove xxx
 ```
 
 {% hint style="info" %}
-目前为止pytorch只支持python3.6及3.7版本进行编译，因此Ubuntu20.04系统可能需要卸载系统自带的3.8安装3.7（尽量不要使用`update-alternatives`等切换版本，可能会出现找不到包等情况），而且在安装3.7时最好切换到`root`而不直接使用`sudo`进行安装：
+目前为止pytorch只支持python3.6及3.7版本进行编译，因此Ubuntu20.04系统可能需要卸载系统自带的3.8安装3.7（尽量不要使用`update-alternatives`等切换Python版本，可能会出现找不到包等情况），而且在安装3.7时最好切换到`root`而不直接使用`sudo`进行安装：
 {% endhint %}
 
 ```bash
