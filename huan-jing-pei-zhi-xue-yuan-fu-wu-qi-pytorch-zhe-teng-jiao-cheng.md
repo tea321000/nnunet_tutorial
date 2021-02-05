@@ -159,7 +159,9 @@ pip install --upgrade git+https://github.com/nanohanno/hiddenlayer.git@bugfix/ge
 
 ```
 
-
+{% hint style="info" %}
+可以尝试拉一个旧的apex分支，可能可以安装C++版本的apex，本人未亲自测试
+{% endhint %}
 
 ### 配置nnunet
 
