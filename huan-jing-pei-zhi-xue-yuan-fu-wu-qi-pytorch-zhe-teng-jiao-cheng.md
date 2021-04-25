@@ -160,7 +160,7 @@ pip install --upgrade git+https://github.com/nanohanno/hiddenlayer.git@bugfix/ge
 {% hint style="info" %}
 可以尝试拉一个旧的apex分支，可能可以安装C++版本的apex，本人未亲自测试
 
-根据[NVIDIA的说法](https://links.jianshu.com/go?to=https%3A%2F%2Fdevtalk.nvidia.com%2Fdefault%2Ftopic%2F1023708%2Fgpu-accelerated-libraries%2Ffp16-support-on-gtx-1060-and-1080%2F)，支持full-rate FP16 performance 的型号是： Tesla P100, Quadro GP100, and Jetson TX1/TX2。GTX 1050, 1060, 1070, 1080, Pascal Titan X, Titan Xp, Tesla P40等型号，不支持full-rate FP16，所以，在这些型号中使用fp16精度反而比fp32慢。
+根据[NVIDIA的说法](https://forums.developer.nvidia.com/t/fp16-support-on-gtx-1060-and-1080/53256)，支持full-rate FP16 performance 的型号是： Tesla P100, Quadro GP100, and Jetson TX1/TX2。GTX 1050, 1060, 1070, 1080, Pascal Titan X, Titan Xp, Tesla P40等型号，不支持full-rate FP16，所以，在这些型号中使用fp16精度反而比fp32慢。
 
 简单来说就是硬件有没有Native FP16 support，即native FP16 instructions支持。因此，可以根据自己显卡的型号来选择是否安装apex。
 {% endhint %}
