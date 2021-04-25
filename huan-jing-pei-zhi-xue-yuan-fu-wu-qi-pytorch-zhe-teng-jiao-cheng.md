@@ -132,8 +132,6 @@ python setup.py install
 
 install后等待漫长的编译，pytorch也就编译成功啦。
 
-\`\`
-
 ### 安装nnUNet
 
 最后则是对[nnUNet](https://github.com/MIC-DKFZ/nnUNet/tree/v1.5.1)的安装**（推荐从源码安装，方便魔改代码，对nnUNet文件夹的py文件进行更新后可以实时反应到环境中 不需要再次`pip uninstall pip install`）**。PyTorch1.6以后自带混合精度训练，不需要再进行[`apex`](https://github.com/NVIDIA/apex)的安装，但由于我们这个是1.5的版本，还是需要进行安装：
@@ -161,6 +159,10 @@ pip install --upgrade git+https://github.com/nanohanno/hiddenlayer.git@bugfix/ge
 
 {% hint style="info" %}
 可以尝试拉一个旧的apex分支，可能可以安装C++版本的apex，本人未亲自测试
+
+根据[NVIDIA的说法](https://links.jianshu.com/go?to=https%3A%2F%2Fdevtalk.nvidia.com%2Fdefault%2Ftopic%2F1023708%2Fgpu-accelerated-libraries%2Ffp16-support-on-gtx-1060-and-1080%2F)，支持full-rate FP16 performance 的型号是： Tesla P100, Quadro GP100, and Jetson TX1/TX2。GTX 1050, 1060, 1070, 1080, Pascal Titan X, Titan Xp, Tesla P40等型号，不支持full-rate FP16，所以，在这些型号中使用fp16精度反而比fp32慢。
+
+简单来说就是硬件有没有Native FP16 support，即native FP16 instructions支持。因此，可以根据自己显卡的型号来选择是否安装apex。  
 {% endhint %}
 
 ### 配置nnunet
